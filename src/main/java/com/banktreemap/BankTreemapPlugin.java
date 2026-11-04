@@ -80,7 +80,7 @@ public class BankTreemapPlugin extends Plugin
 	@Subscribe
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
-		if (event.getContainerId() != InventoryID.BANK)
+		if (event.getContainerId() != InventoryID.BANK.getId())
 		{
 			return;
 		}
@@ -126,12 +126,12 @@ public class BankTreemapPlugin extends Plugin
 		{
 			int id = entry[0];
 			int qty = entry[1];
-			int price = itemManager.getItemPrice(id);
+			long price = itemManager.getItemPrice(id);
 			if (price <= 0)
 			{
 				continue; // untradeable or unpriced
 			}
-			long value = (long) price * qty;
+			long value = price * qty;
 			String name = itemManager.getItemComposition(id).getName();
 			nodes.add(new StackNode(id, name, qty, value));
 			total += value;
