@@ -41,4 +41,15 @@ public interface BankTreemapConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigItem(
+		keyName = "followActiveTab",
+		name = "Follow active bank tab",
+		description = "When you switch bank tabs, expand that tab's treemap and collapse the others (all expand on the 'all items' view)",
+		position = 4
+	)
+	default boolean followActiveTab()
+	{
+		return true;
+	}
 }

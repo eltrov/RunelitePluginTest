@@ -34,12 +34,12 @@ class TreemapComponent extends JComponent
 	private int laidOutW = -1;
 	private int laidOutH = -1;
 
-	TreemapComponent(ItemManager itemManager, BankTreemapConfig config)
+	TreemapComponent(ItemManager itemManager, BankTreemapConfig config, int height)
 	{
 		this.itemManager = itemManager;
 		this.config = config;
 		setToolTipText("");
-		setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 10, 520));
+		setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 10, height));
 	}
 
 	/** Stacks must already be filtered and sorted by value, descending. */
@@ -182,7 +182,7 @@ class TreemapComponent extends JComponent
 			{
 				StackNode n = cell.node;
 				double pct = bankTotal > 0 ? 100.0 * n.getValue() / bankTotal : 0;
-				return String.format("<html>%s x %,d<br>%,d gp (%.1f%% of bank)</html>",
+				return String.format("<html>%s x %,d<br>%,d gp (%.1f%% of tab)</html>",
 					n.getName(), n.getQuantity(), n.getValue(), pct);
 			}
 		}
